@@ -1,0 +1,21 @@
+{
+  "name": "workout-log-server",
+  "version": "1.0.0",
+  "description": "Assignment worth 5 points in the WebImmersion course at Eleven Fifty",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cflemmonds/WorkoutLog.git"
+  },
+  "author": "Chris Flemmonds",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cflemmonds/WorkoutLog/issues"
+  },
+  "homepage": "https://github.com/cflemmonds/WorkoutLog#readme"
+}
