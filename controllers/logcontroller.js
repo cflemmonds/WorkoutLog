@@ -13,8 +13,8 @@ router.get('/log', (req, res) => {
 
 /* Journal Create */
 
-router.post('/create', validateJWT, async (req, res) => {
-    const { description, definition, result } = req.body.log;
+router.post('/', validateJWT, async (req, res) => {
+    const { description, definition, result } = req.body;
     const { id } = req.user;
     const logEntry = {
         description,
@@ -32,18 +32,18 @@ router.post('/create', validateJWT, async (req, res) => {
 
 /* Get ALL entries */
 
-router.get("/", async (req, res) => {
-    try {
-        const entries = await LogModel.findAll();
-        res.status(200).json(entries);
-    } catch (err) {
-        res.status(500).json({ error: err });
-    }
-});
+// router.get("/", async (req, res) => {
+//     try {
+//         const entries = await LogModel.findAll();
+//         res.status(200).json(entries);
+//     } catch (err) {
+//         res.status(500).json({ error: err });
+//     }
+// });
 
 /* Get Journals by user */
 
-router.get("/mine", validateJWT, async (req, res) => {
+router.get("/", validateJWT, async (req, res) => {
     let { id } = req.user;
     try {
         const userLogs = await LogModel.findAll({
@@ -73,8 +73,8 @@ router.get("/:id", async (req, res) => {
 
 /* Update a log */
 
-router.put("/update/:entryId", validateJWT, async (req, res) => {
-    const { description, definition, result } = req.body.log;
+router.put("/:entryId", validateJWT, async (req, res) => {
+    const { description, definition, result } = req.body;
     const logId = req.params.entryId;
     const userId = req.user.id;
 
@@ -100,7 +100,7 @@ router.put("/update/:entryId", validateJWT, async (req, res) => {
 
 /* Delete a log */
 
-router.delete("/delete/:id", validateJWT, async (req, res) => {
+router.delete("/:id", validateJWT, async (req, res) => {
     const ownerId = req.user.id;
     const logId = req.params.id;
 
